@@ -11,18 +11,18 @@ class Database{
 
         $this->connection = new PDO($connection_string);
 
-        $this->connection->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC)
+        $this->connection->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
     }
 
-        public function execute($request){
+        public function execute($request, $params){
         
         //sagatavot sql vaicajumu
         $query = $this->connection->prepare($request);
 
         //izpildit sql vaicajumu
-        $query->execute();
+        $query->execute($params);
 
         //sanemt datus no sql uz php
-        return $query->fetchAll(PDO::FETCH_ASSOC);
+        return $query->fetchAll();
     }
 }
