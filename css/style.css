@@ -1,0 +1,60 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+nav {
+    background-color: #333;
+    display: flex;
+    justify-content: center;
+}
+
+.ul_nav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.li_nav {
+    float: left;
+}
+
+.li_nav a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.li_nav a:hover {
+    background-color: #111;
+}
+
+/* Animation */
+.li_nav a {
+    position: relative;
+}
+
+.li_nav a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #fff;
+    visibility: hidden;
+    transform: scaleX(0);
+    transition: all 0.3s ease-in-out 0s;
+}
+
+.li_nav a:hover::after {
+    visibility: visible;
+    transform: scaleX(1);
+}
+.content{
+    margin: 20px;
+}

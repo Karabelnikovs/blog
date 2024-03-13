@@ -1,42 +1,13 @@
 <?php
-require "functions.php";
-$config = require "config.php";
-require "Database.php";
 
-$db = new Database($config["config"]);
+$uri = parse_url($_SERVER["REQUEST_URI"])["path"];
 
-
-$query_string = "SELECT * FROM posts";
-$params = [];
-
-if(isset($_GET["id"]) && $_GET["id"] != ""){
-$query_string .=" WHERE id=:id";
-$params[":id"] = $_GET["id"];
+if($uri == "/" || $uri == "/index" || $uri == "/index.php"){
+    require "controllers/index.php";
 }
-else if(isset($_GET["name"]) && $_GET["name"] != ""){
-$query_string .=" LEFT JOIN categories ON posts.category_id=categories.id WHERE categories.name=:name";
-$params[":name"] = $_GET["name"];
-}   
-
-$posts = $db->execute($query_string, $params);
-
-echo "<h1>Posts</h1>";
-
-
-echo "<form>";
-echo "<input name='id' />";
-echo "<button>Filter by id</button>";
-echo "</form>";
-
-echo "<br>";
-
-echo "<form>";
-echo "<input name='name' />";
-echo "<button>Filter by category</button>";
-echo "</form>";
-
-
-
-foreach($posts as $post){
-    echo "<li>" . $post["title"] . "</li>" . "<br>";
+else if($uri == "/about" || $uri == "/about.php"){
+    require "controllers/about.php";
+}
+else if($uri == "/story" || $uri == "/story.php"){
+    require "controllers/story.php";
 }
