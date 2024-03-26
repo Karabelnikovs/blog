@@ -13,7 +13,7 @@
                 <option value=3>food</option>
             </select>
         <br>
-        <button>Pievienot grāmatu</button>
+        <button>Save</button>
     </form>
 
 </body>
